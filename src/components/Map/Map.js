@@ -16,7 +16,14 @@ const Map = (props) => {
 
     const options ={
         streetViewControl: false,
-        fullscreenControl: false
+        fullscreenControl: false,
+        mapTypeControl: false,
+        styles: [
+            {
+              featureType: "poi",
+              stylers: [{ visibility: "off" }]
+            }
+        ]
     };
 
     const testMarker = {
@@ -29,8 +36,10 @@ const Map = (props) => {
         <GoogleMap
             mapContainerStyle = {containerStyle}
             center = {center}
-            zoom={12}
-            options={options}>
+            zoom={11}
+            options={options}
+            mapid= 'a2d9d8333221dcb3'
+            >
         
             <Marker position = {testMarker} />
            
