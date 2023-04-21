@@ -23,34 +23,28 @@ const Login = () => {
 
     
     return (
-        
         <>  
         <TopNav />
 
         <div className="container">
-            <h1>Login</h1>
+            <h1>Log In</h1>
+            <p> New User?<span> <a href="/Signup">Sign up for an account</a></span></p>
 
             <form onSubmit={login}>
                 <div className="mb-3">
-                    <input type="email" class="form-control" id ="email"
+                    <input type="email" className="form-control" id ="email"
                         placeholder = "Enter your email address"
                         value={inputEmail} onChange = {(e)=> setEmail(e.target.value)}></input>
-
                 </div>
                 <div className="mb-3">
-                    <input type="password" class="form-control" id="password" 
+                    <input type="password" className="form-control" id="password" 
                         placeholder = "Enter your password"
                         value={inputPassword} onChange = {(e)=> setPassword(e.target.value)}></input>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
-
         </div>
-
-
         </>
-
-
     )
 }
 

@@ -16,7 +16,7 @@ function TopNav() {
 
             </Nav>
             <Nav className="ms-auto">
-            <a class="btn btn-primary" href="/login" role="button">Login</a>
+            <a className="btn btn-primary" href="/login" role="button">Login</a>
             </Nav>
         </Navbar.Collapse>
 
