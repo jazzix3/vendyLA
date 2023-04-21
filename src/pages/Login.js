@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import TopNav from "../components/Navbar/Navbar";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
     const [inputEmail, setEmail] = useState();
     const [inputPassword, setPassword] = useState();
 
+    const location = useLocation();
+    const message = new URLSearchParams(location.search).get("message");
+
+    const navigate = useNavigate();
+
     // https://firebase.google.com/docs/auth/web/start#sign_in_existing_users
     const login = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, inputEmail, inputPassword)
         .then((userCredential) => {
-            console.log(userCredential);
+            navigate("/Dashboard")
         })
         .catch((error) => {
             console.log(error)
@@ -26,7 +31,8 @@ const Login = () => {
         <>  
         <TopNav />
 
-        <div className="container">
+        <div className="container" id="main-content">
+            {message && <div className="alert alert-success">{message}</div>}
             <h1>Log In</h1>
             <p> New User?<span> <a href="/Signup">Sign up for an account</a></span></p>
 

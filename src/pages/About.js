@@ -7,8 +7,11 @@ const About = () => {
         <>  
         
         <TopNav />
-        <h1>About</h1>
-        
+
+        <div className="container" id="main-content">
+            <h1>About</h1>
+            
+        </div>
         </>
 
 

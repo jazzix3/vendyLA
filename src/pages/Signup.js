@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import TopNav from "../components/Navbar/Navbar";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     
     const [inputEmail, setEmail] = useState();
     const [inputPassword, setPassword] = useState();
+    const navigate = useNavigate();
 
     // https://firebase.google.com/docs/auth/web/start
     const signup = (e) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, inputEmail, inputPassword)
         .then((userCredential) => {
-            console.log(userCredential);
+            navigate("/Login?message= New account created successfully! ");
         })
         .catch((error) => {
             console.log(error)
@@ -25,7 +27,7 @@ const Signup = () => {
         <>  
         <TopNav />
 
-        <div className="container">
+        <div className="container" id="main-content">
             <h1>Sign Up</h1>
             <p> Already have an account?<span> <a href="/Login">Log in</a></span></p>
 
