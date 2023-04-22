@@ -1,5 +1,5 @@
 import React from "react";
-import TopNav from "../components/Navbar/Navbar";
+import TopNav from "../components/Navbar";
 
 const Reviews = () => {
     

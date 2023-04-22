@@ -1,5 +1,5 @@
 import React from "react";
-import TopNav from "../components/Navbar/Navbar";
+import TopNav from "../components/Navbar";
 import { useJsApiLoader } from '@react-google-maps/api';
 import Map from "../components/Map/Map";
 import { mapOptions } from '../components/Map/MapConfiguration';
@@ -21,7 +21,7 @@ const Home = () => {
           <div id="map-container">
             <Map isLoaded={ isLoaded } />
           </div>
-          
+
         </div>
         
         </>

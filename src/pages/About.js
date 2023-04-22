@@ -1,5 +1,5 @@
 import React from "react";
-import TopNav from "../components/Navbar/Navbar";
+import TopNav from "../components/Navbar";
 
 const About = () => {
     
@@ -10,7 +10,7 @@ const About = () => {
 
         <div className="container" id="main-content">
             <h1>About</h1>
-            
+
         </div>
         </>
 

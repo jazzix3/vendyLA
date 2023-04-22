@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TopNav from "../components/Navbar/Navbar";
+import TopNav from "../components/Navbar";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";

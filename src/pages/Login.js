@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import TopNav from "../components/Navbar/Navbar";
+import TopNav from "../components/Navbar";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-    const [inputEmail, setEmail] = useState();
-    const [inputPassword, setPassword] = useState();
+    const [inputEmail, setEmail] = useState("");
+    const [inputPassword, setPassword] = useState("");
 
     const location = useLocation();
     const message = new URLSearchParams(location.search).get("message");
