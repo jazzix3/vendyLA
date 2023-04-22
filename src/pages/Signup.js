@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TopNav from "../components/Navbar";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
     
@@ -29,7 +29,7 @@ const Signup = () => {
 
         <div className="container" id="main-content">
             <h1>Sign Up</h1>
-            <p> Already have an account?<span> <a href="/Login">Log in</a></span></p>
+            <p> Already have an account?<span> <Link to="/Login">Log in</Link></span></p>
 
             <form onSubmit={signup}>
                 <div className="mb-3">

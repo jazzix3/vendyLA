@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TopNav from "../components/Navbar";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -34,7 +34,7 @@ const Login = () => {
         <div className="container" id="main-content">
             {message && <div className="alert alert-success">{message}</div>}
             <h1>Log In</h1>
-            <p> New User?<span> <a href="/Signup">Sign up for an account</a></span></p>
+            <p> New User?<span> <Link to="/Signup">Sign up for an account</Link></span></p>
 
             <form onSubmit={login}>
                 <div className="mb-3">
