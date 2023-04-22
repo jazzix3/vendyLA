@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
 
+
   return (
     <div className="App">
        
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/Reviews" element={<Reviews/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
+
       </Routes>
 
 
