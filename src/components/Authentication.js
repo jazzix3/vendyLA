@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
 
 export const AuthContext = React.createContext(null);
+
+export function useAuth() {
+    return useContext(AuthContext)
+  }
 
 export const AuthContextProvider = ({ children }) => {
     const [authUser, setAuthUser] = useState(null);
