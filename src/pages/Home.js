@@ -18,9 +18,9 @@ const Home = () => {
         <TopNav />
         
         <div className="container" id="main-content">
-          <div id="map-container">
-            <Map isLoaded={ isLoaded } />
-          </div>
+            <div id="map-container">
+                <Map isLoaded={ isLoaded } />
+            </div>
 
         </div>
         
