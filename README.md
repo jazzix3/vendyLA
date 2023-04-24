@@ -14,9 +14,14 @@ Street vendors are underrepresented within other Food/Merch reviewer application
 [Node.js] (https://nodejs.org/en/download/.)
 
 ```
+npm i react-scripts
 npm i bootstrap
 npm i @react-google-maps/api
 npm i firebase
+
+Run app using 'npm start'
+
+Current demo link: https://drive.google.com/file/d/1J9EknQYt1JJPBcGjcG5PDW-Gw0mcM1wT/view?usp=drivesdk
 ```
 
 **$.env.local** file in main folder:
