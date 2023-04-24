@@ -1,14 +1,12 @@
 import React from "react";
 import TopNav from "../components/Navbar";
-import { useJsApiLoader } from '@react-google-maps/api';
-import Map from "../components/Map/Map";
-import { mapOptions } from '../components/Map/MapConfiguration';
+import { useLoadScript } from '@react-google-maps/api';
+import Map from "../components/Map";
 
 
 const Home = () => {
-    const { isLoaded } = useJsApiLoader({
-        id:mapOptions.googleMapApiKey,
-        googleMapApiKey: mapOptions.googleMapApiKey
+    const { isLoaded } = useLoadScript({
+        googleMapApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
       })
 
 
