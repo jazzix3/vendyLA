@@ -1,5 +1,6 @@
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom'
 import { AuthContext } from './Authentication';
 
 function TopNav() {
@@ -16,14 +17,18 @@ function TopNav() {
                         <Nav.Link href="/reviews">Reviews</Nav.Link>
                     </Nav>
                     {authUser ? (
+                        
                         <Nav className="ms-auto" style={{ display: "flex", alignItems: "center" }}>
-                            <span>Logged in as {authUser.email}</span>
-                            <a className="btn btn-primary" href="/" role="button" style={{marginLeft: "15px"}} onClick={logOut}>Log Out</a>
+                           <Link to="/Dashboard">Logged in as {authUser.email}</Link>
+                            <Button className="btn btn-primary" style={{marginLeft: "15px"}} onClick={logOut}>Log Out</Button>
                         </Nav>
+                            
+
                         ) 
+                        
                     : (
                         <Nav className="ms-auto" style={{ display: "flex", alignItems: "center" }}>
-                            <a className="btn btn-primary" href="/login" role="button">Log In</a>
+                            <Link to="/Login"><button className="btn btn-primary">Log In</button></Link>
                         </Nav>
                         )
                     }

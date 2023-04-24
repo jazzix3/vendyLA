@@ -2,13 +2,15 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PrivateRoute from './components/PrivateRoute';
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Reviews from "./pages/Reviews";
 import Dashboard from "./pages/Dashboard";
-import PrivateRoute from './components/PrivateRoute';
+import EditProfile from './pages/EditProfile';
+
 
 function App() {
     return (
@@ -22,6 +24,8 @@ function App() {
                     <Route path="/Reviews" element={<Reviews />} />
                     <Route path="/Dashboard" 
                         element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+                    <Route path="/EditProfile" 
+                        element={<PrivateRoute><EditProfile /></PrivateRoute>} />
                 </Routes>
             </BrowserRouter>
         </div>
