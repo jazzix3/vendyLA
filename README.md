@@ -21,12 +21,6 @@ npm i firebase
 
 Run app using 'npm start'
 
-To set up firebase go to https://firebase.google.com/. Sign in. On the left navigation bar select 'authentication'. click on get started. enable google. click on the slider to the right of the Google logo to Enable it. Pick your email in the "prject support email". Then click save. Google sign in should now be enabled.
-
-Go back to the 'authentication' screen. click on "sign-in method" on the above navigation bar. click on "Add new provider". Select 'Email/Password'. Click on the first slider to enable email/password login (the first option). Then click on save.
-
-To enable your firebase with your project. On firebase click on the settings wheel icon next to "project Overview". Click on "project settings". Scroll down to the "Your apps" section and click on the logo that looks like a code block "</>". Give it a nickname and Register the app. Then replace that 'const firebaseCOnfig = {}`  in the 'firebase.js' file with what is on your screen. Then click on 'continue to console'
-
 Current demo link: https://drive.google.com/file/d/1J9EknQYt1JJPBcGjcG5PDW-Gw0mcM1wT/view?usp=drivesdk
 ```
 
