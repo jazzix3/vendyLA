@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import TopNav from "../components/Navbar";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -48,28 +49,28 @@ const Login = () => {
             <div className="container" id="main-content">
                 {message && <div className="alert alert-success">{message}</div>}
                 <h1>Log In</h1>
-                <p> New User?<span> <a href="/Signup">Sign up for an account</a></span></p>
+                <p> New User?<span> <Link to="/Signup">Sign up for an account</Link></span></p>
 
-                <form onSubmit={login}>
-                    <div className="mb-3">
-                        <input type="email" className="form-control" id="email"
-                            placeholder="Enter your email address"
-                            value={inputEmail} onChange={(e) => setEmail(e.target.value)}></input>
-                    </div>
-                    <div className="mb-3">
-                        <input type="password" className="form-control" id="password"
-                            placeholder="Enter your password"
-                            value={inputPassword} onChange={(e) => setPassword(e.target.value)}></input>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+                <Form onSubmit={login}>
+                    <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" value={inputEmail} onChange={(e) => setEmail(e.target.value)} required/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" value={inputPassword} onChange={(e) => setPassword(e.target.value)} required />
+                </Form.Group>
+                    
+                    <Button variant="primary" type="submit">Submit</Button>
+                </Form>
 
                 {/* button that handles the sign in  */}
                 <div className="mt-4">
-                    <button className="btn btn-outline-secondary" onClick={googleSignIn}>
+                    <Button variant="outline-secondary" onClick={googleSignIn}>
                         <img src="https://img.icons8.com/color/16/000000/google-logo.png" className="me-2" alt="Google Logo" />
                         Sign in with your Google account
-                    </button>
+                    </Button>
 
                 </div>
             </div>

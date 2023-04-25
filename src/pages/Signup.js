@@ -1,52 +1,78 @@
 import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import TopNav from "../components/Navbar";
-import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { auth, db } from "../firebase";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
-    
-    const [inputEmail, setEmail] = useState();
-    const [inputPassword, setPassword] = useState();
+    const [inputFirstName, setFirstName] = useState("");
+    const [inputLastName, setLastName] = useState("");
+    const [inputEmail, setEmail] = useState("");
+    const [inputPassword, setPassword] = useState("");
     const navigate = useNavigate();
 
-    // https://firebase.google.com/docs/auth/web/start
     const signup = (e) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, inputEmail, inputPassword)
-        .then((userCredential) => {
-            navigate("/Login?message= New account created successfully! ");
-        })
-        .catch((error) => {
-            console.log(error)
-        });
-    }
+            .then((userCredential) => {
+                const user = userCredential.user;
+                return setDoc(doc(db, "users", user.uid), {
+                firstName: inputFirstName,
+                lastName: inputLastName,
+                email: inputEmail,
+            })
+            .then(() => {
+                return true; // return a promise that resolves to true
+            });
+            })
+            .then((docCreated) => {
+                if (docCreated) {
+                    return signOut(auth).then(() => {
+                    navigate("/Login?message=New account created successfully!");
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        };
 
-    
     return (
-        <>  
+        <>
         <TopNav />
 
         <div className="container" id="main-content">
             <h1>Sign Up</h1>
-            <p> Already have an account?<span> <a href="/Login">Log in</a></span></p>
+            <p> Already have an account?<span><Link to="/Login">Log in</Link></span></p>
 
-            <form onSubmit={signup}>
-                <div className="mb-3">
-                    <input type="email" className="form-control" id ="email"
-                        placeholder = "Enter your email address"
-                        value={inputEmail} onChange = {(e)=> setEmail(e.target.value)}></input>
-                </div>
-                <div className="mb-3">
-                    <input type="password" className="form-control" id="password" 
-                        placeholder = "Enter your password"
-                        value={inputPassword} onChange = {(e)=> setPassword(e.target.value)}></input>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+            <Form onSubmit={signup}>
+                <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control type="text" value={inputFirstName}  onChange={(e) => setFirstName(e.target.value)} required />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="lastName">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control type="text" value={inputLastName} onChange={(e) => setLastName(e.target.value)} required/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" value={inputEmail} onChange={(e) => setEmail(e.target.value)} required/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" value={inputPassword} onChange={(e) => setPassword(e.target.value)} required />
+                </Form.Group>
+
+                <Button variant="primary" type="submit">Submit</Button>
+            </Form>
         </div>
         </>
-    )
-}
+  );
+};
 
 export default Signup;
