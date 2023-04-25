@@ -4,6 +4,8 @@ import TopNav from "../components/Navbar";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+//import { doc, getDoc, setDoc } from "firebase/firestore";
+//import { auth, db } from "../firebase";
 
 const Login = () => {
 
@@ -39,6 +41,32 @@ const Login = () => {
                 console.log(error)
             });
     };
+        /* Need to check if user exists in database, if not, create users doc
+        // Not functional yet-- no resolve if no firstname
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const profile = user.providerData[0];
+            const firstName = profile.given_name;
+            const lastName = profile.family_name;
+            const email = user.email;
+            if (firstName || lastName) {
+                const userDocRef = doc(db, "users", user.uid);
+                getDoc(userDocRef)
+                  .then((doc) => {
+                    if (doc.exists()) {
+                      navigate("/Dashboard");
+                    } else {
+                      setDoc(userDocRef, {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                      })
+                        .then(() => {
+                          navigate("/Dashboard");
+                        });
+                    }
+                  })*/
+                  
 
 
 
