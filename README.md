@@ -7,22 +7,26 @@ Street vendors are underrepresented within other Food/Merch reviewer application
 - Allow users to find nearby street vendors via location services
 - Additional feature if time allows:  Ability to rate and review their food/merchandise.
 
+### Demo Videos:
+
+[Firebase and Map](https://drive.google.com/file/d/1J9EknQYt1JJPBcGjcG5PDW-Gw0mcM1wT/view?usp=drivesdk)
 
 
 ### Requirements:
 
-[Node.js] (https://nodejs.org/en/download/.)
+[Node.js](https://nodejs.org/en/download/)
 
 ```
 npm i react-scripts
 npm i bootstrap
 npm i @react-google-maps/api
 npm i firebase
-
-Run app using 'npm start'
-
-Current demo link: https://drive.google.com/file/d/1J9EknQYt1JJPBcGjcG5PDW-Gw0mcM1wT/view?usp=drivesdk
+npm i use-places-autocomplete
+npm i @reach/combobox --legacy-peer-deps 
 ```
+
+Run app using `npm start`
+
 
 **$.env.local** file in main folder:
 ```
@@ -39,4 +43,5 @@ REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
 
 REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+```
 
