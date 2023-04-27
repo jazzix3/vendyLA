@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import { Button } from "react-bootstrap";
+import MapDashboard from "../components/Map-dashboard";
 
 
 const Dashboard = () => {
@@ -60,13 +61,18 @@ const Dashboard = () => {
                 <div class="col-md-6 mt-5" id="business-info" >
                     <p><strong>Business Name: </strong>{businessName}</p>
                     <p><strong>Address: </strong></p>
+                    <div class="mt-3 mb-3" id="map-container">
+                        <MapDashboard />
+                    </div>
                     <p><strong>Phone: </strong>{phone}</p>
                     <p><strong>Website: </strong></p>
                     <p><strong>Hours: </strong></p>
                     <Link to={`/EditBusiness/${currentUid}`}>
                         <Button variant="outline-primary" type="submit">Edit Business Information</Button>
                     </Link>
+                    
                 </div>
+                
                 </div>
             </div>
         </>

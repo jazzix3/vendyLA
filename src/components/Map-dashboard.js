@@ -1,10 +1,10 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader, Marker} from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader} from '@react-google-maps/api';
 
 
 const containerStyle = {
-    width: '90vw',
-    height: '75vh' 
+    width: '200px',
+    height: '200px' 
 };
 
 const center = {
@@ -13,9 +13,8 @@ const center = {
 };
 
 const options ={
-    streetViewControl: false,
-    fullscreenControl: false,
-    mapTypeControl: false,
+
+    disableDefaultUI: true,
     styles: [
         {
           featureType: "poi",
@@ -24,28 +23,23 @@ const options ={
     ]
 };
 
-function Map() {
+function MapDashboard() {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY
     })
 
-    const testMarker = {
-        lat: 34.2407,
-        lng: -118.5300
-    };
 
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
-            zoom={10.5}
+            zoom={12}
             options={options}
         >
-        <Marker position = {testMarker} />
         <></>
         </GoogleMap>
     ) : <></>
     }
 
-export default Map
+export default MapDashboard
