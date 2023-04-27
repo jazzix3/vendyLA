@@ -6,10 +6,13 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 const EditProfile = () => {
-    const [inputFirstName, setFirstName] = useState("");
-    const [inputLastName, setLastName] = useState("");
     const { userId } = useParams();
     const navigate = useNavigate();
+    
+    const [inputFirstName, setFirstName] = useState("");
+    const [inputLastName, setLastName] = useState("");
+    
+    
   
     const saveProfile = (e) => {
       e.preventDefault();
@@ -33,7 +36,7 @@ const EditProfile = () => {
       <TopNav />
       <div className="container" id="main-content">
         <h1>Edit Profile</h1>
-        <p>This is where vendors can edit their information (write to db)</p>
+
         <Form onSubmit={saveProfile}>
           <Form.Group className="mb-3" controlId="FirstName">
             <Form.Label>First Name</Form.Label>

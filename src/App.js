@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Reviews from "./pages/Reviews";
 import Dashboard from "./pages/Dashboard";
 import EditProfile from './pages/EditProfile';
+import EditBusiness from './pages/EditBusiness';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
                         element={<PrivateRoute><Dashboard /></PrivateRoute>} />
                     <Route path="/EditProfile/:userId" 
                         element={<PrivateRoute><EditProfile /></PrivateRoute>} />
+                    <Route path="/EditBusiness/:userId" 
+                        element={<PrivateRoute><EditBusiness /></PrivateRoute>} />
                 </Routes>
             </BrowserRouter>
         </div>

@@ -7,10 +7,12 @@ import { Button } from "react-bootstrap";
 
 
 const Dashboard = () => {
+    const [currentUid, setCurrentUid] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
-    const [currentUid, setCurrentUid] = useState("");
+    const [businessName, setBusinessName] = useState("");
+    const [phone, setPhone] = useState("");
 
     useEffect(() => {
         const currentUser = auth.currentUser;
@@ -20,10 +22,12 @@ const Dashboard = () => {
                 .then((doc) => {
                     if (doc.exists()) {
                         const data = doc.data();
+                        setCurrentUid(currentUser.uid);
                         setFirstName(data.firstName);
                         setLastName(data.lastName);
                         setEmail(data.email);
-                        setCurrentUid(currentUser.uid);
+                        setBusinessName(data.business.businessName)
+                        setPhone(data.business.phone)
                     } else {
                         console.log("User not found");
                     }
@@ -43,12 +47,27 @@ const Dashboard = () => {
             <div className="container" id="main-content">
                 <h1>Dashboard</h1>
                 <p>Welcome! This is where vendors can view their info.</p>
-                <p><strong>First Name:</strong> {firstName}</p>
-                <p><strong>Last Name:</strong> {lastName}</p>
-                <p><strong>Email:</strong> {email}</p>
-                <Link to={`/EditProfile/${currentUid}`}>
-                    <Button variant="primary" type="submit">Edit Profile</Button>
-                </Link>
+                <div class="row">
+                <div class="col-md-6 mt-5" id="user-profile">
+                    
+                    <p><strong>First Name: </strong>{firstName}</p>
+                    <p><strong>Last Name: </strong>{lastName}</p>
+                    <p><strong>Email: </strong>{email}</p>
+                    <Link to={`/EditProfile/${currentUid}`}>
+                        <Button variant="outline-primary" type="submit">Edit Profile</Button>
+                    </Link>
+                </div>
+                <div class="col-md-6 mt-5" id="business-info" >
+                    <p><strong>Business Name: </strong>{businessName}</p>
+                    <p><strong>Address: </strong></p>
+                    <p><strong>Phone: </strong>{phone}</p>
+                    <p><strong>Website: </strong></p>
+                    <p><strong>Hours: </strong></p>
+                    <Link to={`/EditBusiness/${currentUid}`}>
+                        <Button variant="outline-primary" type="submit">Edit Business Information</Button>
+                    </Link>
+                </div>
+                </div>
             </div>
         </>
     );

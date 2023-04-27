@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import TopNav from "../components/Navbar";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
@@ -11,6 +11,7 @@ const Signup = () => {
     const [inputLastName, setLastName] = useState("");
     const [inputEmail, setEmail] = useState("");
     const [inputPassword, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const signup = (e) => {
@@ -19,10 +20,16 @@ const Signup = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 return setDoc(doc(db, "users", user.uid), {
-                firstName: inputFirstName,
-                lastName: inputLastName,
-                email: inputEmail,
-            })
+                    firstName: inputFirstName,
+                    lastName: inputLastName,
+                    email: inputEmail,
+                    business: {
+                        businessName: "",
+                        address: "",
+                        phone: "",
+                        website: "",
+                    }
+                })
             .then(() => {
                 return true; // return a promise that resolves to true
             });
@@ -36,6 +43,7 @@ const Signup = () => {
             })
             .catch((error) => {
                 console.log(error);
+                setError("Email is already in use");
             });
         };
 
@@ -44,6 +52,7 @@ const Signup = () => {
         <TopNav />
 
         <div className="container" id="main-content">
+            {error && <Alert variant="danger">{error}</Alert>}
             <h1>Sign Up</h1>
             <p> Already have an account?<span><Link to="/Login">Log in</Link></span></p>
 
