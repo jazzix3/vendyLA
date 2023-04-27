@@ -4,6 +4,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import PlacesAutoComplete from "../components/PlacesAutoComplete";
 
 const EditBusiness = () => {
   const { userId } = useParams();
@@ -58,6 +59,12 @@ const EditBusiness = () => {
             <Form.Label>Business Name</Form.Label>
             <Form.Control type="text" value={inputBusinessName} onChange={(e) => setBusinessName(e.target.value)} required />
           </Form.Group>
+
+          <Form.Group className="mb-3 address" controlId="Address">
+          <Form.Label>Address</Form.Label>
+            <PlacesAutoComplete />
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="Phone">
             <Form.Label>Phone</Form.Label>
             <Form.Control type="text" value={inputPhone} onChange={checkPhone} required />

@@ -7,3 +7,7 @@
 #main-content{
     margin-top: 30px;
 }
+
+.address .combobox-input {
+    width: 100%;
+  }
