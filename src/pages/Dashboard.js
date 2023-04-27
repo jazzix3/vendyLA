@@ -12,6 +12,7 @@ const Dashboard = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [userProfile, setProfile] = useState("");
     const [businessName, setBusinessName] = useState("");
     const [phone, setPhone] = useState("");
 
@@ -27,6 +28,7 @@ const Dashboard = () => {
                         setFirstName(data.firstName);
                         setLastName(data.lastName);
                         setEmail(data.email);
+                        setProfile(data.userProfile);
                         setBusinessName(data.business.businessName)
                         setPhone(data.business.phone)
                     } else {
@@ -54,6 +56,7 @@ const Dashboard = () => {
                     <p><strong>First Name: </strong>{firstName}</p>
                     <p><strong>Last Name: </strong>{lastName}</p>
                     <p><strong>Email: </strong>{email}</p>
+                    <p><strong>Profile Image: </strong><img src={userProfile} style={{ width: "40px", height: "40px" }}/> </p>
                     <Link to={`/EditProfile/${currentUid}`}>
                         <Button variant="outline-primary" type="submit">Edit Profile</Button>
                     </Link>

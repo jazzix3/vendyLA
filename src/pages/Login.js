@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import TopNav from "../components/Navbar";
 import { auth } from "../firebase";
-import { signInWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword} from "firebase/auth";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import GoogleSignIn from "./GoogleSignUp";
 //import { doc, getDoc, setDoc } from "firebase/firestore";
 //import { auth, db } from "../firebase";
 
@@ -29,18 +30,6 @@ const Login = () => {
             });
     }
 
-    // simple sign in using gmail
-    const googleSignIn = () => {
-        const provider = new GoogleAuthProvider();
-        const auth = getAuth();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                navigate("/Dashboard")
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    };
         /* Need to check if user exists in database, if not, create users doc
         // Not functional yet-- no resolve if no firstname
         .then((userCredential) => {
@@ -93,13 +82,8 @@ const Login = () => {
                     <Button variant="primary" type="submit">Submit</Button>
                 </Form>
 
-                {/* button that handles the sign in  */}
-                <div className="mt-4">
-                    <Button variant="outline-secondary" onClick={googleSignIn}>
-                        <img src="https://img.icons8.com/color/16/000000/google-logo.png" className="me-2" alt="Google Logo" />
-                        Sign in with your Google account
-                    </Button>
-
+                <div>
+                    <GoogleSignIn />
                 </div>
             </div>
 
