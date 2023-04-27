@@ -14,10 +14,12 @@ const EditBusiness = () => {
   const [error, setError] = useState("");
 
   const [inputBusinessName, setBusinessName] = useState("");
+
+  const [selectedLocation, setSelectedLocation] = useState(null);
+
   const [inputPhone, setPhone] = useState("");
   const [phoneIsValid, setPhoneIsValid] = useState(true);
 
-  
 
   const saveBusinessInfo = (e) => {
     e.preventDefault();
@@ -28,6 +30,7 @@ const EditBusiness = () => {
       updateDoc(userDocRef, {
         "business.businessName": inputBusinessName,
         "business.phone": inputPhone,
+        "business.address": selectedLocation
       })
         .then(() => {
           navigate("/Dashboard");
@@ -48,6 +51,8 @@ const EditBusiness = () => {
     setPhoneIsValid(value === "" || PHONE_REGEX.test(value));
   };
 
+  console.log(selectedLocation);
+
   return (
     <>
       <TopNav />
@@ -62,8 +67,8 @@ const EditBusiness = () => {
 
           <Form.Group className="mb-3 address" controlId="Address">
           <Form.Label>Address</Form.Label>
-            <PlacesAutoComplete />
-          </Form.Group>
+          <PlacesAutoComplete setAddress={setSelectedLocation} />
+        </Form.Group>
 
           <Form.Group className="mb-3" controlId="Phone">
             <Form.Label>Phone</Form.Label>
@@ -78,6 +83,7 @@ const EditBusiness = () => {
             Save Business Information
           </Button>
         </Form>
+
       </div>
     </>
   );

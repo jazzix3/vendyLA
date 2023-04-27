@@ -15,6 +15,7 @@ const Dashboard = () => {
     const [email, setEmail] = useState("");
     const [userProfile, setProfile] = useState("");
     const [businessName, setBusinessName] = useState("");
+    const [location, setLocation] = useState("");
     const [phone, setPhone] = useState("");
 
     useEffect(() => {
@@ -31,6 +32,7 @@ const Dashboard = () => {
                         setEmail(data.email);
                         setProfile(data.userProfile);
                         setBusinessName(data.business.businessName)
+                        setLocation(data.business.address.address)
                         setPhone(data.business.phone)
                     } else {
                         console.log("User not found");
@@ -64,7 +66,7 @@ const Dashboard = () => {
                 </div>
                 <div class="col-md-6 mt-5" id="business-info" >
                     <p><strong>Business Name: </strong>{businessName}</p>
-                    <p><strong>Address: </strong></p>
+                    <p><strong>Location: </strong>{location}</p>
                     <p><strong>Phone: </strong>{phone}</p>
                     <p><strong>Website: </strong></p>
                     <p><strong>Hours: </strong></p>

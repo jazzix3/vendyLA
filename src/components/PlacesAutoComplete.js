@@ -4,7 +4,7 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption}
 import "@reach/combobox/styles.css";
 
 
-const PlacesAutoComplete = ({ setSelected }) => {
+const PlacesAutoComplete = ({ setAddress }) => {
 
     const {
         ready,                          // Whether script is loaded
@@ -15,14 +15,20 @@ const PlacesAutoComplete = ({ setSelected }) => {
     } = usePlacesAutocomplete();
 
 
-    const handleSelect = async(address) => {
+    const handleSelect = async (address) => {
         setValue(address, false);
         clearSuggestions();
-
+        
         const results = await getGeocode({ address });
-        const {lat, lng} = await getLatLng(results[0]);
-        setSelected({ lat, lng })
-    }
+        const { lat, lng } = await getLatLng(results[0]);
+
+        // call the setAddress callback with the selected address
+        setAddress({
+            address: address,
+            latitude: lat,
+            longitude: lng
+        });
+        };
 
     return (
         <Combobox onSelect={handleSelect}>
