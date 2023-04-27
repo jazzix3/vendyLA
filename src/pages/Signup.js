@@ -41,8 +41,6 @@ const Signup = () => {
                 }
                 
                                 
-    
-                // set user data after profile image uploaded
                 return userProfilePromise.then((userProfile) => {
                     return setDoc(userRef, {
                         firstName: inputFirstName,
