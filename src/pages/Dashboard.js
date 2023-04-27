@@ -10,6 +10,7 @@ const Dashboard = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [currentUid, setCurrentUid] = useState("");
 
     useEffect(() => {
         const currentUser = auth.currentUser;
@@ -22,15 +23,19 @@ const Dashboard = () => {
                         setFirstName(data.firstName);
                         setLastName(data.lastName);
                         setEmail(data.email);
+                        setCurrentUid(currentUser.uid);
                     } else {
                         console.log("User not found");
                     }
+                    
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         }
     }, []);
+
+    console.log(currentUid);
 
     return (
         <>
@@ -41,7 +46,7 @@ const Dashboard = () => {
                 <p><strong>First Name:</strong> {firstName}</p>
                 <p><strong>Last Name:</strong> {lastName}</p>
                 <p><strong>Email:</strong> {email}</p>
-                <Link to="/EditProfile">
+                <Link to={`/EditProfile/${currentUid}`}>
                     <Button variant="primary" type="submit">Edit Profile</Button>
                 </Link>
             </div>

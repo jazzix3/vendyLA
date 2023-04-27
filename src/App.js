@@ -24,7 +24,7 @@ function App() {
                     <Route path="/Reviews" element={<Reviews />} />
                     <Route path="/Dashboard" 
                         element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-                    <Route path="/EditProfile" 
+                    <Route path="/EditProfile/:userId" 
                         element={<PrivateRoute><EditProfile /></PrivateRoute>} />
                 </Routes>
             </BrowserRouter>
