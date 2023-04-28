@@ -34,9 +34,9 @@ const Dashboard = () => {
                         setEmail(data.email);
                         setProfile(data.userProfile);
                         setBusinessName(data.business.businessName)
-                        setAddress(data.business.address.address)
-                        setLatitude(data.business.address.latitude)
-                        setLongitude(data.business.address.longitude)
+                        setAddress(data.business.location.address)
+                        setLatitude(data.business.location.latitude)
+                        setLongitude(data.business.location.longitude)
                         setPhone(data.business.phone)
                     } else {
                         console.log("User not found");

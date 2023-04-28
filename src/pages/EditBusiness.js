@@ -30,7 +30,7 @@ const EditBusiness = () => {
         updateDoc(userDocRef, {
             "business.businessName": inputBusinessName,
             "business.phone": inputPhone,
-            "business.address": selectedLocation
+            "business.location": selectedLocation
         }).then(() => {
             navigate("/Dashboard");
         }).catch((error) => {
@@ -62,9 +62,9 @@ const EditBusiness = () => {
                     <Form.Control type="text" value={inputBusinessName} onChange={(e) => setBusinessName(e.target.value)} required />
                 </Form.Group>
 
-                <Form.Group className="mb-3 address" controlId="Address">
-                    <Form.Label>Address</Form.Label>
-                    <PlacesAutoComplete setAddress={setSelectedLocation} />
+                <Form.Group className="mb-3 location" controlId="Location">
+                    <Form.Label>Location</Form.Label>
+                    <PlacesAutoComplete setLocation={setSelectedLocation} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="Phone">

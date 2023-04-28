@@ -2,9 +2,11 @@ import React from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const libraries = ["places"];
-const containerStyle = { width: '250px', height: '250px' };
+const containerStyle = { width: '100%', height: '250px' };
 const options = {
-    disableDefaultUI: true,
+    streetViewControl: false,
+    fullscreenControl: false,
+    mapTypeControl: false,
     styles: [
         {
         featureType: "poi",
@@ -20,6 +22,7 @@ function MapDashboard({ lat, lng }) {
     });
 
     const center = { lat: parseFloat(lat), lng: parseFloat(lng) };
+    const centerLA = { lat: 34.052235, lng: -118.243683 };
 
     if (!isLoaded) return <div>Loading</div>;
 
@@ -27,11 +30,11 @@ function MapDashboard({ lat, lng }) {
         <>
             <GoogleMap
                 mapContainerStyle={containerStyle}
-                center={center}
-                zoom={12}
+                center={isNaN(center.lat) || isNaN(center.lng) ? centerLA : center}
+                zoom={isNaN(center.lat) || isNaN(center.lng) ? 11 : 15}
                 options={options}
             >
-            <Marker position={center} />
+            <Marker position={isNaN(center.lat) || isNaN(center.lng) ? centerLA : center} />
             </GoogleMap>
         </>
     );

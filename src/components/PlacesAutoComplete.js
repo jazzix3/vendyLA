@@ -4,7 +4,7 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption}
 import "@reach/combobox/styles.css";
 
 
-const PlacesAutoComplete = ({ setAddress }) => {
+const PlacesAutoComplete = ({ setLocation }) => {
 
     const {
         ready,                          
@@ -23,7 +23,7 @@ const PlacesAutoComplete = ({ setAddress }) => {
         const { lat, lng } = await getLatLng(results[0]);
 
         
-        setAddress({                    // prop passed from component gets set when address is selected
+        setLocation({                    // prop passed from component gets set when address is selected
             address: address,
             latitude: lat,
             longitude: lng

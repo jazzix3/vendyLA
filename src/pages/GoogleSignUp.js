@@ -23,12 +23,6 @@ const GoogleSignIn = () => {
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
-                    business: {
-                        businessName: "",
-                        address: "",
-                        phone: "",
-                        website: "",
-                    }
                 });
             })
             .then(() => {
