@@ -7,10 +7,10 @@ import "@reach/combobox/styles.css";
 const PlacesAutoComplete = ({ setAddress }) => {
 
     const {
-        ready,                          // Whether script is loaded
-        value,                          // What user types into input box
+        ready,                          
+        value,                          
         setValue,
-        suggestions: { status, data },    // Whether data is fetched correctly
+        suggestions: { status, data },    
         clearSuggestions                
     } = usePlacesAutocomplete();
 
@@ -19,11 +19,11 @@ const PlacesAutoComplete = ({ setAddress }) => {
         setValue(address, false);
         clearSuggestions();
         
-        const results = await getGeocode({ address });
+        const results = await getGeocode({ address });     
         const { lat, lng } = await getLatLng(results[0]);
 
-        // call the setAddress callback with the selected address
-        setAddress({
+        
+        setAddress({                    // prop passed from component gets set when address is selected
             address: address,
             latitude: lat,
             longitude: lng
@@ -32,12 +32,10 @@ const PlacesAutoComplete = ({ setAddress }) => {
 
     return (
         <Combobox onSelect={handleSelect}>
-            <ComboboxInput value={value} onChange={e => setValue(e.target.value)} disable={!ready}
-                className="combobox-input" placeholder="Search for address" />
+            <ComboboxInput className="combobox-input" value={value} onChange={e => setValue(e.target.value)} disable={!ready}  />
             <ComboboxPopover>
                 <ComboboxList>
-                    {status ==="OK" && 
-                    data.map(({ place_id, description }) => (
+                    {status ==="OK" && data.map(({ place_id, description }) => (
                         <ComboboxOption key= {place_id} value={description} />
                         ))}
                 </ComboboxList>
